@@ -258,20 +258,21 @@ class BST{
 		return is_perfect(node->left) == is_perfect(node->right); // O(log(n))
 	}
 
+	// Is degenerate
 	bool is_degenerate(Node<T> *& node)
 	{
-		if (node->right == NULL && node->left == NULL)
+		if (node->right == NULL && node->left == NULL) // Checks if there are any children of a node
 		{
 			return true;
 		}
-		else if (node->right == NULL && node->left != NULL)
+		else if (node->right == NULL && node->left != NULL) // Checks if only left child exist
 		{
 			return is_degenerate(node->left);
-		} else if (node->left == NULL && node->right != NULL)
+		} else if (node->left == NULL && node->right != NULL) // Checks if only right child exist
 		{
 			return is_degenerate(node->right);
 		}
-		else
+		else // Else both exist, so its not a degenerate tree
 		{
 			return false;
 		}
@@ -405,11 +406,11 @@ class BST{
 
 	bool is_degenerate()
 	{
-		if (isEmpty())
+		if (isEmpty()) // Checks if BST is empty
 		{
 			return false;
 		}
-		else
+		else // If its not empty, then it does the algorithm to determine if its a degenerate tree
 		{
 			return is_degenerate(root);
 		}
