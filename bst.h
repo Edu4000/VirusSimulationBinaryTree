@@ -91,7 +91,7 @@ class BST{
 			cout << nodo-> data << ":";	// O(1)
 			inOrden(nodo->right);		// O(n)
 		}
-	} 
+	}
 
 	// Length				O(n)
 	int length(Nodo<T> * &nodo) {
@@ -139,7 +139,7 @@ class BST{
 			aux = fila.dequeue();	// O(n)
 
 			cout << aux->data << ":";	// O(1)
-			
+
 			if(aux->left != NULL) {		// O(1)
 				fila.queue(aux->left);	// O(n)
 			}
@@ -155,7 +155,7 @@ class BST{
 		if (nodo->data == data){	// O(1)
 			return;		// O(1)
 		}
-		
+
 		cout << nodo->data << ":";	// O(1)
 
 		if (data > nodo->data){		// O(1)
@@ -171,7 +171,7 @@ class BST{
 			list.addLast(nodo->data);	// O(n)
 			flatten(nodo->left, list);	// O(n)
 			flatten(nodo->right, list);	// O(n)
-		}	
+		}
 	}
 
 	// Missions				O(n)
@@ -213,7 +213,7 @@ class BST{
         return 0;		// O(1)
     }
 
-	
+
 	// Is Full
 	bool is_full(Nodo<T> * & node) // O(log(n))
 	{
@@ -239,7 +239,7 @@ class BST{
 		{
 			return 1; // O(n)
 		}
-	
+
 		int res = leaf_count(node->left) + leaf_count(node->right); // O(log(n))
 		return res; // O(1)
 	}
@@ -256,6 +256,25 @@ class BST{
 			return 1; // O(n)
 		}
 		return is_perfect(node->left) == is_perfect(node->right); // O(log(n))
+	}
+
+	bool is_degenerate(Node<T> *& node)
+	{
+		if (node->right == NULL && node->left == NULL)
+		{
+			return true;
+		}
+		else if (node->right == NULL && node->left != NULL)
+		{
+			return is_degenerate(node->left);
+		} else if (node->left == NULL && node->right != NULL)
+		{
+			return is_degenerate(node->right);
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 
@@ -323,7 +342,7 @@ class BST{
 	int lenght();
 
 	2. Escribe una funcion que regresa el elemento mayor del  BST.
-	T max();   
+	T max();
 
 	3. Escribe una funcion que regresa el elemento menor del  BST.
 	T min();
@@ -368,8 +387,8 @@ class BST{
         {
             return gadgets(root, data, 0);	// O(n)
         }
-    }	
-	
+    }
+
 	bool is_full()
 	{
 		return is_full(root);
