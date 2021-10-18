@@ -213,6 +213,52 @@ class BST{
         return 0;		// O(1)
     }
 
+	
+	// Is Full
+	bool is_full(Nodo<T> * & node) // O(log(n))
+	{
+		if (node == NULL) // O(1)
+		{
+			return true; // O(1)
+		}
+		else if ((node->left == NULL && node->right != NULL) || (node->left != NULL && node->right == NULL)) // O(1)
+		{
+			return false; // O(1)
+		}
+		return (is_full(node->left)) && (is_full(node->right)); // O(log(n))
+	}
+
+	// Leaf Counter
+	int leaf_count(Nodo<T> * & node) // O(log(n))
+	{
+		if (node == NULL) // O(n)
+		{
+			return 0; // O(n)
+		}
+		else if (node->left == NULL && node->right == NULL) // O(n)
+		{
+			return 1; // O(n)
+		}
+	
+		int res = leaf_count(node->left) + leaf_count(node->right); // O(log(n))
+		return res; // O(1)
+	}
+
+	// Is Perfect
+	bool is_perfect(Nodo<T> * & node) // O(log(n))
+	{
+		if (node == NULL) // O(n)
+		{
+			return 0; // O(n)
+		}
+		else if (node->left == NULL && node->right == NULL) // O(n)
+		{
+			return 1; // O(n)
+		}
+		return is_perfect(node->left) == is_perfect(node->right); // O(log(n))
+	}
+
+
 	public:
 	BST(){
 		root = NULL;	//	O(1)
@@ -322,5 +368,20 @@ class BST{
         {
             return gadgets(root, data, 0);	// O(n)
         }
-    }
+    }	
+	
+	bool is_full()
+	{
+		return is_full(root);
+	}
+
+	int leaf_count()
+	{
+		return leaf_count(root);
+	}
+
+	bool is_perfect()
+	{
+		return is_full(root) && is_perfect(root);
+	}
 };

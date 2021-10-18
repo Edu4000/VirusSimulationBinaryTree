@@ -99,11 +99,22 @@ int main()
 
 	cout << mainTree.first()->size() << endl;
 
-	//cout << mainTree.is_full() << endl;
-	//cout << trialTree.is_full() << endl;
+	cout << mainTree.is_full() << endl;
 
-	//cout << mainTree.leaf_count() << endl;
-	//cout << trialTree.leaf_count() << endl;
+	cout << mainTree.leaf_count() << endl;
+
+	cout << mainTree.is_perfect() << endl;
+
+	// Binary tree to test the functions
+	BST<int> testTree = BST<int> ();
+	testTree.insert(10);
+	testTree.insert(5);
+	testTree.insert(15);
+
+	// arbolPruebas.inOrden();
+	cout << testTree.is_full() << endl;
+	cout << testTree.leaf_count() << endl;
+	cout << testTree.is_perfect() << endl;
 
 	// Close the file
 	MyReadFile.close();
