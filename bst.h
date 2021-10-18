@@ -277,7 +277,6 @@ class BST{
 		}
 	}
 
-
 	public:
 	BST(){
 		root = NULL;	//	O(1)
@@ -402,5 +401,17 @@ class BST{
 	bool is_perfect()
 	{
 		return is_full(root) && is_perfect(root);
+	}
+
+	bool is_degenerate()
+	{
+		if (isEmpty())
+		{
+			return false;
+		}
+		else
+		{
+			return is_degenerate(root);
+		}
 	}
 };
