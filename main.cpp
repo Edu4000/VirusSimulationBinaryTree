@@ -4,10 +4,16 @@
 #include <sstream>	// tokenizar el string de cada myTextistro
 #include <random>
 
+#include "bst.h"
+#include "Server.h"
+
 using namespace std;
 
 int main()
 {
+	// Creating Binary Tree
+	BST<LinkedList<Server>*> mainTree = BST<LinkedList<Server>*> ();
+
 	// Create a text string, which is used to output the text file
 	string mes, hora, ip, errorLog;
 	int dia;
@@ -16,10 +22,14 @@ int main()
 	// Read from the text file
 	ifstream MyReadFile("bitacora.txt"); //  Oct 9 10:32:24 423.2.230.77:6166 Failed password for illegal user guest
 
+	int randomSize, randomInfected;
+	LinkedList<Server>* auxList = new LinkedList<Server> (NULL);
+	Server auxServer;
 
 	// Use a while loop together with the getline() function to read the file line by line
 	while (getline (MyReadFile, myText))
 	{
+
 		int aux = 1, aux3 = 1; // aux determines when a word is completed, aux3 for last str
 		string aux2 = ""; // string aux2 is where data will be saved for later
 		for (int i = 0; i < myText.length(); i++)
@@ -67,9 +77,10 @@ int main()
 			errorLog = aux2;
 		}
 
+		int randomInfected = (rand() % 1000) + 1;
 		if (randomSize > 0)
 		{
-			auxServer = Server(mes, dia, hora, ip, errorLog, (randomInfected = 499) ? true : false);
+			auxServer = Server(mes, dia, hora, ip, errorLog, (randomInfected == 499) ? true : false);
 			auxList->addLast(auxServer);
 			randomSize--;
 		}
@@ -78,17 +89,21 @@ int main()
 			mainTree.insert(auxList);
 			auxList = new LinkedList<Server> (NULL);
 			randomSize = (rand() % 200) + 1;
-			auxList->addLast(Server(mes, dia, hora, ip, errorLog, (randomInfected = 499) ? true : false));
+			auxList->addLast(Server(mes, dia, hora, ip, errorLog, (randomInfected == 499) ? true : false));
 			randomSize--;
 		}
 	}
-
 	mainTree.insert(auxList);
-
 	cout << "Listo!!" << endl;
 	cout << mainTree.lenght() << endl;
 
 	cout << mainTree.first()->size() << endl;
+
+	//cout << mainTree.is_full() << endl;
+	//cout << trialTree.is_full() << endl;
+
+	//cout << mainTree.leaf_count() << endl;
+	//cout << trialTree.leaf_count() << endl;
 
 	// Close the file
 	MyReadFile.close();
