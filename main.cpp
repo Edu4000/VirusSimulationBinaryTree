@@ -26,7 +26,7 @@ using namespace std;
 
 void clearTerminal()
 {
-	sleep(1);
+	S(1);
 	cout << "\033[2J\033[1;1H";
 }
 
