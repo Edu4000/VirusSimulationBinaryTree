@@ -12,6 +12,8 @@
 #include "bst.h"
 #include "Server.h"
 
+using namespace std;
+
 void S(int sleepMs)
 {
 #ifdef LINUX
@@ -21,8 +23,6 @@ void S(int sleepMs)
     Sleep(sleepMs);
 #endif
 }
-
-using namespace std;
 
 void clearTerminal()
 {
