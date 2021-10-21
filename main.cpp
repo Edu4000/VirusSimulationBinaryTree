@@ -17,7 +17,7 @@ using namespace std;
 void S(int sleepMs)
 {
 #ifdef LINUX
-    sleep(1);   // usleep takes sleep time in us (1 millionth of a second)
+    sleep(1);   // sleep in seconds
 #endif
 #ifdef WINDOWS
     Sleep(sleepMs);
@@ -32,14 +32,14 @@ void clearTerminal()
 
 int main()
 {
-	bool fileLoaded = false; int choice;
+	bool fileLoaded = false; int choice = 1;
 	BST<LinkedList<Server>*> mainTree = BST<LinkedList<Server>*> ();
 
 	while (true)
 	{
 		try
 		{
-			cout << "| ==================== Menu  ==================== |" << endl;
+			cout << "| =================== Menu  ==================== |" << endl;
 			cout << "0. Cargar el archivo | Default " << endl;
 			cout << "1. Imprimir arbol por nivel" << endl;
 			cout << "2. Imprimir arbol por pre-orden" << endl;
@@ -51,9 +51,17 @@ int main()
 			cout << "8. Exit\n";
 
 			cin >> choice;
+
+			if (cin.fail())
+			{
+				cin.clear();
+				cin.ignore();
+				throw "Error";
+			}
+
 			if (choice == 8)
 			{
-				clearTerminal();
+				//clearTerminal();
 				cout << "Exiting!" << endl;
 				return 0;
 			}
@@ -214,9 +222,7 @@ int main()
 		}
 		catch(...)
 		{
-			clearTerminal();
 			cout << "Error. Not possible to execute the operation. Restarting the program." << endl;
-			clearTerminal();
 		}
 	}
 }
