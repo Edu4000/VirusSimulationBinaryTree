@@ -18,6 +18,12 @@ class Node
 			this->nextPtr = NULL; // O(1)
 			this->prevPtr = NULL; // O(1)
 		}
+
+		friend ostream& operator <<(ostream & salida, const Node & node)
+		{
+			salida << node.data;
+			return salida;
+		}
 };
 
 template<typename var>
@@ -495,5 +501,11 @@ class LinkedList
 			}
 			curr = curr->nextPtr;
 		}
+	}
+
+	friend ostream& operator <<(ostream & salida, const LinkedList & list)
+	{
+		salida << *list.header;
+		return salida;
 	}
 };

@@ -26,4 +26,10 @@ class Server {
 		this->erroLog = erroLog;
 		this->infectado = infectado;
 	}
+
+	friend ostream& operator <<(ostream & salida, const Server & server)
+	{
+		salida << server.ip;
+		return salida;
+	}
 };
