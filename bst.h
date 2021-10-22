@@ -93,6 +93,21 @@ class BST{
 		}
 	}
 
+	// Total Infected
+	float total_infected(Nodo<T> *& nodo, int size)
+	{
+		float total = 0;
+		if(nodo != NULL)	// O(1)
+		{
+			total += *nodo-> data / size;
+			total += total_infected(nodo->left, size);
+			total += total_infected(nodo->right, size);
+			
+			return total;
+		}
+		return 0;
+	}
+
 	// Length				O(n)
 	int length(Nodo<T> * &nodo) {
 		if(nodo == NULL) {	// O(1)
@@ -259,7 +274,7 @@ class BST{
 	}
 
 	// Is degenerate
-	bool is_degenerate(Node<T> *& node)
+	bool is_degenerate(Node<T> * & node)
 	{
 		if (node->right == NULL && node->left == NULL) // Checks if there are any children of a node
 		{
@@ -414,5 +429,10 @@ class BST{
 		{
 			return is_degenerate(root);
 		}
+	}
+
+	float infected_percent(){
+		int size = lenght();
+		return total_infected(root, size);
 	}
 };

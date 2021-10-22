@@ -27,6 +27,10 @@ class Server {
 		this->infectado = infectado;
 	}
 
+	bool operator == (bool true_statement){
+		return true_statement == this->infectado;
+	}
+
 	friend ostream& operator <<(ostream & salida, const Server & server)
 	{
 		salida << server.ip;

@@ -209,6 +209,7 @@ int main()
 			{
 				clearTerminal();
 				cout << "Choice #6" << endl;
+				cout << "The " << mainTree.infected_percent() * 100 << "%" << " of the servers are infected" << endl;
 
 			}
 			else if (choice == 7)

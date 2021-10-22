@@ -503,6 +503,24 @@ class LinkedList
 		}
 	}
 
+	float infected() {
+		Node<var>* ptr = header;
+		float total = 0;
+		float nodeNum = 0;
+		while(ptr != NULL) {
+			if(ptr->data == true){
+				total++;
+			}
+			nodeNum++;
+			ptr = ptr->nextPtr;
+		}
+		return total/nodeNum;
+	}
+
+	float operator / (int size){
+		return infected() / size;
+	}
+
 	friend ostream& operator <<(ostream & salida, const LinkedList & list)
 	{
 		salida << *list.header;
