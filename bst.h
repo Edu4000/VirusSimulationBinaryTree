@@ -88,7 +88,7 @@ class BST{
 		return 0;
 	}
 
-	bool searchIP(Node<T> *& nodo, string data)
+	bool searchIP(Nodo<T> *& nodo, string data)
 	{
 		if (nodo == NULL)
 		{
@@ -100,7 +100,7 @@ class BST{
 		}
 		else
 		{
-			if (searchIP(nodo->left, data) || searchIP(nodo-right, data))
+			if (searchIP(nodo->left, data) || searchIP(nodo->right, data))
 			{
 				return true;
 			}
@@ -110,6 +110,7 @@ class BST{
 			}
 		}
 	}
+
 	// search				O(n)
 	bool search(Nodo<T> * & nodo, T data){
 		if (nodo == NULL)	// O(1)
@@ -129,6 +130,7 @@ class BST{
 			return search(nodo->left, data);	// O(n)
 		}
 	}
+	
 	// Length				O(n)
 	int length(Nodo<T> * &nodo) {
 		if(nodo == NULL) {	// O(1)
@@ -140,7 +142,6 @@ class BST{
 			return num;		// O(1)
 		}
 	}
-
 
 	// max					O(n)
 	T max(Nodo<T> * &nodo) {
@@ -249,7 +250,6 @@ class BST{
         }
         return 0;		// O(1)
     }
-
 
 	// Is Full
 	bool is_full(Nodo<T> * & node) // O(log(n))

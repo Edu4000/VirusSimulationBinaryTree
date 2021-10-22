@@ -205,7 +205,11 @@ int main()
 				cin.clear();
 				cin.ignore();
 
-				if (mainTree.searchIP(data))
+				if (mainTree.searchIP("423.2.230.77:6156"))
+				{
+					cout << "There is a server with that ip" << endl;
+				}
+				else
 				{
 					cout << "There is a server with that ip" << endl;
 				}
