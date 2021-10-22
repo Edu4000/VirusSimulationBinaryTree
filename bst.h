@@ -43,26 +43,6 @@ class BST{
 		}
 	}
 
-	// search				O(n)
-	bool search(Nodo<T> * & nodo, T data){
-		if (nodo == NULL)	// O(1)
-		{
-			return false;	// O(1)
-		}
-		else if (nodo->data == data)	// O(1)
-		{
-			return true;	// O(1)
-		}
-		else if (data > nodo->data)		// O(1)
-		{
-			return search(nodo->right, data);	// O(n)
-		}
-		else	// O(1)
-		{
-			return search(nodo->left, data);	// O(n)
-		}
-	}
-
 	// preOrden				O(n)
 	void preOrden(Nodo<T> * & nodo){
 		if(nodo != NULL)	// O(1)
@@ -99,15 +79,56 @@ class BST{
 		float total = 0;
 		if(nodo != NULL)	// O(1)
 		{
-			total += *nodo-> data / size;
+			total += *nodo->data / size;
 			total += total_infected(nodo->left, size);
 			total += total_infected(nodo->right, size);
-			
+
 			return total;
 		}
 		return 0;
 	}
 
+	bool searchIP(Node<T> *& nodo, string data)
+	{
+		if (nodo == NULL)
+		{
+			return false;
+		} // *nodo->data is a linked list
+		else if (*nodo->data == data)
+		{
+			return true;
+		}
+		else
+		{
+			if (searchIP(nodo->left, data) || searchIP(nodo-right, data))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+	// search				O(n)
+	bool search(Nodo<T> * & nodo, T data){
+		if (nodo == NULL)	// O(1)
+		{
+			return false;	// O(1)
+		}
+		else if (nodo->data == data)	// O(1)
+		{
+			return true;	// O(1)
+		}
+		else if (data > nodo->data)		// O(1)
+		{
+			return search(nodo->right, data);	// O(n)
+		}
+		else	// O(1)
+		{
+			return search(nodo->left, data);	// O(n)
+		}
+	}
 	// Length				O(n)
 	int length(Nodo<T> * &nodo) {
 		if(nodo == NULL) {	// O(1)
@@ -119,6 +140,7 @@ class BST{
 			return num;		// O(1)
 		}
 	}
+
 
 	// max					O(n)
 	T max(Nodo<T> * &nodo) {
@@ -429,6 +451,11 @@ class BST{
 		{
 			return is_degenerate(root);
 		}
+	}
+
+	bool searchIP(string data)
+	{
+		return searchIP(root, data);
 	}
 
 	float infected_percent(){

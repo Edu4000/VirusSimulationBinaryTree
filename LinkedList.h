@@ -33,18 +33,18 @@ class LinkedList
 	Node<var>* header; // O(n)
 	Node<var>* last; // O(n)
 
-	bool containsRecursivo(var data, Node<var> * ptr) // O(n) 
-	{
-		if (ptr == NULL) // O(1)
-		{
-			return false; // O(1)
-		}
-		else if(data == ptr->data) // O(1)
-		{
-			return true; // O(1)
-		}
-		return containsRecursivo(data, ptr->nextPtr); // O(n)
-	}
+	/* bool containsRecursivo(var data, Node<var> * ptr) // O(n) */
+	/* { */
+	/* 	if (ptr == NULL) // O(1) */
+	/* 	{ */
+	/* 		return false; // O(1) */
+	/* 	} */
+	/* 	else if(data == ptr->data) // O(1) */
+	/* 	{ */
+	/* 		return true; // O(1) */
+	/* 	} */
+	/* 	return containsRecursivo(data, ptr->nextPtr); // O(n) */
+	/* } */
 
 	int lastIndexOfRecursivo(int index, var data, Node<var> * ptr) // O(n)
 	{
@@ -73,7 +73,7 @@ class LinkedList
 	}
 
 	bool operator > (const LinkedList<var>& linkedL) // O(n)
-	{ 
+	{
 		return this->size() > linkedL.size(); // O(n)
 	}
 
@@ -120,16 +120,16 @@ class LinkedList
 	}
 
 	// Contains							O(n)
-	bool contains(var data) {
-		Node<var>* ptr = this->header;	// O(1)
-		while (ptr != NULL) {			// O(n)
-			if (ptr->data == data) {	// O(1)
-				return true;			// O(1)
-			}
-			ptr = ptr->nextPtr;			// O(n)
-		}
-		return false;					// O(1)
-	}
+	/* bool contains(var data) { */
+	/* 	Node<var>* ptr = this->header;	// O(1) */
+	/* 	while (ptr != NULL) {			// O(n) */
+	/* 		if (ptr->data == data) {	// O(1) */
+	/* 			return true;			// O(1) */
+	/* 		} */
+	/* 		ptr = ptr->nextPtr;			// O(n) */
+	/* 	} */
+	/* 	return false;					// O(1) */
+	/* } */
 
 	// Get								O(n)
 	var get(int index) {
@@ -302,9 +302,9 @@ class LinkedList
 
 	// Metodos Recursivos Definidos en Private de LinkedList
 	// Contains V2
-	bool containsV2(var data) {
-		return containsRecursivo(data, header);
-	}
+	/* bool containsV2(var data) { */
+	/* 	return containsRecursivo(data, header); */
+	/* } */
 
 	// Last Index Of
 	int lastIndexOf(var data) {
@@ -320,18 +320,18 @@ class LinkedList
 	// Sum								O(n)
 	int sum() {
 		Node<var>* ptr = this->header;	// O(1)
-		int res = 0;					
+		int res = 0;
 		while (ptr != NULL) {			// O(n)
 			res += ptr->data;			// O(1)
 			ptr = ptr->nextPtr;			// O(1)
 		}
-		return res;	
+		return res;
 	}
 
 	// Maximum Node						O(n)
 	var max() {
 		Node<var>* ptr = this->header;	// O(1)
-		var res = ptr->data;					
+		var res = ptr->data;
 		while (ptr != NULL) {			// O(n)
 			if(res < ptr->data) {		// O(1)
 				res = ptr->data;		// O(1)
@@ -344,7 +344,7 @@ class LinkedList
 	// Maximum Node						O(n)
 	var min() {
 		Node<var>* ptr = this->header;	// O(1)
-		var res = ptr->data;					
+		var res = ptr->data;
 		while (ptr != NULL) {			// O(n)
 			if(res > ptr->data) {		// O(1)
 				res = ptr->data;		// O(1)
@@ -503,8 +503,32 @@ class LinkedList
 		}
 	}
 
+	bool checkData(string data)
+	{
+		Node<var>* ptr = header; // Header of a linked list with servers
+		string aux;
+
+		while (ptr != NULL) // ptr->data = Node<Server> data
+		{
+			if (ptr->data == data)
+			{
+				return true;
+			}
+			else
+			{
+				ptr = ptr->nextPtr;
+			}
+		}
+		return false;
+	}
+
+	bool operator == (string data)
+	{
+		return checkData(data); // Bool statement
+	}
+
 	float infected() {
-		Node<var>* ptr = header;
+		Node<var> * ptr = header; // The current node <server> linked list
 		float total = 0;
 		float nodeNum = 0;
 		while(ptr != NULL) {

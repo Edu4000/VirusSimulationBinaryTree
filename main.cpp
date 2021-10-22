@@ -201,8 +201,14 @@ int main()
 			else if (choice == 5) // search IP
 			{
 				clearTerminal();
-				cout << "Choice #5" << endl;
-				/* cout << "Press any key to continue" << endl; */
+				cout << "What is the IP?" << endl;
+				cin.clear();
+				cin.ignore();
+
+				if (mainTree.searchIP(data))
+				{
+					cout << "There is a server with that ip" << endl;
+				}
 
 			}
 			else if (choice == 6) // print percentage
