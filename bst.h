@@ -67,7 +67,7 @@ class BST{
 	void preOrden(Nodo<T> * & nodo){
 		if(nodo != NULL)	// O(1)
 		{
-			cout << nodo-> data << ":";	// O(1)
+			cout << *nodo->data << ":";	// O(1)
 			preOrden(nodo->left);		// O(n)
 			preOrden(nodo->right);		// O(n)
 		}
@@ -79,7 +79,7 @@ class BST{
 		{
 			postOrden(nodo->left);		// O(n)
 			postOrden(nodo->right);		// O(n)
-			cout << nodo-> data << ":";	// O(1)
+			cout << *nodo-> data << ":";	// O(1)
 		}
 	}
 
@@ -88,7 +88,7 @@ class BST{
 		if(nodo != NULL)	// O(1)
 		{
 			inOrden(nodo->left);		// O(n)
-			cout << nodo-> data << ":";	// O(1)
+			cout << *nodo-> data << ":";	// O(1)
 			inOrden(nodo->right);		// O(n)
 		}
 	}
@@ -314,7 +314,7 @@ class BST{
 	}
 	// inOrden()		O(n)
 	void inOrden(){
-		postOrden(root);	// O(n)
+		inOrden(root);	// O(n)
 	}
 
 	// length()			O(n)

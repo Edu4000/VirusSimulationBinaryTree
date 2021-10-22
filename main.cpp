@@ -154,8 +154,9 @@ int main()
 				// Close the file
 				MyReadFile.close();
 				fileLoaded = true;
-				cout << "File saved!" << endl;
 				clearTerminal();
+				cout << "File saved!" << endl;
+				cout << mainTree.lenght() << endl;
 			}
 			else if (choice == 1)
 			{
