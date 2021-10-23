@@ -47,7 +47,7 @@ class BST{
 	void preOrden(Nodo<T> * & nodo){
 		if(nodo != NULL)	// O(1)
 		{
-			cout << *nodo->data << ":";	// O(1)
+			cout << *nodo->data << " -- ";	// O(1)
 			preOrden(nodo->left);		// O(n)
 			preOrden(nodo->right);		// O(n)
 		}
@@ -59,7 +59,7 @@ class BST{
 		{
 			postOrden(nodo->left);		// O(n)
 			postOrden(nodo->right);		// O(n)
-			cout << *nodo-> data << ":";	// O(1)
+			cout << *nodo-> data << " -- ";	// O(1)
 		}
 	}
 
@@ -68,7 +68,7 @@ class BST{
 		if(nodo != NULL)	// O(1)
 		{
 			inOrden(nodo->left);		// O(n)
-			cout << *nodo-> data << ":";	// O(1)
+			cout << *nodo-> data << " -- ";	// O(1)
 			inOrden(nodo->right);		// O(n)
 		}
 	}
@@ -296,7 +296,7 @@ class BST{
 	}
 
 	// Is degenerate
-	bool is_degenerate(Node<T> * & node)
+	bool is_degenerate(Nodo<T> * & node)
 	{
 		if (node->right == NULL && node->left == NULL) // Checks if there are any children of a node
 		{
@@ -344,14 +344,17 @@ class BST{
 	// preOrden()		O(n)
 	void preOrden(){
 		preOrden(root);		// O(n)
+		cout << endl;
 	}
 	// postOrden()		O(n)
 	void postOrden(){
 		postOrden(root);	// O(n)
+		cout << endl;
 	}
 	// inOrden()		O(n)
 	void inOrden(){
 		inOrden(root);	// O(n)
+		cout << endl;
 	}
 
 	// length()			O(n)

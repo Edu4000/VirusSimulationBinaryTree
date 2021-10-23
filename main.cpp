@@ -226,6 +226,13 @@ int main()
 			{
 				clearTerminal();
 				cout << "Choice #7" << endl; // BST methods
+				(mainTree.is_full()) ? cout << "Tree is full." << endl : cout << "Tree is not full" << endl; 
+
+				cout << "The number of leaves is " << mainTree.leaf_count() << endl;
+
+				(mainTree.is_perfect()) ? cout << "Tree is perfect." << endl : cout << "Tree is not perfect" << endl;
+
+				(mainTree.is_degenerate()) ? cout << "Tree is degenerate." << endl : cout << "Tree is not degenerate" << endl;				
 			}
 			else
 			{
