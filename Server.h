@@ -24,15 +24,14 @@ class Server {
 
 	public:
 	/**
-	 * @brief Construct a new Server object with default valeus.
+	 * @brief Construct a new Server object with default valeus. O(1)
 	 * 
 	 */
-	Server()
-	{
+	Server(){
 	}
 
 	/**
-	 * @brief Construct a new Server object
+	 * @brief Construct a new Server object. O(1)
 	 * 
 	 * @param mes The month of access attempt
 	 * @param dia The day of access attempt
@@ -41,8 +40,7 @@ class Server {
 	 * @param errorLog The error of the access attempt
 	 * @param infectado Status of infected of IP
 	 */
-	Server(string mes, int dia, string hora, string ip, string errorLog, bool infectado)
-	{
+	Server(string mes, int dia, string hora, string ip, string errorLog, bool infectado){
 		this->mes = mes;
 		this->dia = dia;
 		this->hora = hora;
@@ -52,7 +50,7 @@ class Server {
 	}
 
 	/**
-	 * @brief Operator overload of ==, checks if server is infected
+	 * @brief Operator overload of ==, checks if server is infected. O(1)
 	 * 
 	 * @param true_statement Default true
 	 * @return TRUE if server is infected, else return FALSE
@@ -62,25 +60,23 @@ class Server {
 	}
 
 	/**
-	 * @brief Operator overload of ==, compares string of parameter to IP of server
+	 * @brief Operator overload of ==, compares string of parameter to IP of server. O(1)
 	 * 
 	 * @param ip String to compare with server IP
 	 * @return TRUE if string is the same as server IP, else return FALSE
 	 */
-	bool operator == (string ip)
-	{
+	bool operator == (string ip){
 		return this->ip == ip;
 	}
 
 	/**
-	 * @brief Overload operator of <<, used to print server IP
+	 * @brief Overload operator of <<, used to print server IP. O(1)
 	 * 
 	 * @param salida Out stream variable
 	 * @param server The server object
 	 * @return ostream& 
 	 */
-	friend ostream& operator <<(ostream & salida, const Server & server)
-	{
+	friend ostream& operator <<(ostream & salida, const Server & server){
 		salida << server.ip;
 		return salida;
 	}
