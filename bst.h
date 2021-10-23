@@ -167,22 +167,22 @@ class BST{
 		return aux->data;	// O(1)
 	}
 
-	// levels				O(n^2)
+	// levels				O(n)
 	void levels(Nodo<T> * &nodo) {
 		LinkedList<Nodo<T>*> fila = LinkedList<Nodo<T>*>(NULL);	// O(1)
 		fila.queue(nodo);	// O(n)
 		Nodo<T>* aux;		// O(1)
 
 		while(!fila.is_empty()) {	// O(n)
-			aux = fila.dequeue();	// O(n)
+			aux = fila.dequeue();	// O(1)
 
-			cout << aux->data << ":";	// O(1)
+			cout << *aux->data << " -- ";	// O(1)
 
 			if(aux->left != NULL) {		// O(1)
-				fila.queue(aux->left);	// O(n)
+				fila.queue(aux->left);	// O(1)
 			}
 			if(aux->right != NULL) {	// O(1)
-				fila.queue(aux->right);	// O(n)
+				fila.queue(aux->right);	// O(1)
 			}
 		}
 		cout << endl;	// O(1)
@@ -372,30 +372,6 @@ class BST{
 	T min() {	// O(n)
 		return (min(this->root));	// O(n)
 	}
-
-	/*
-	--------------------------------
-		Ejericios>
-	--------------------------------
-
-	1. Escribe una funcion que regresa cuantos nodos hay en el BST.
-	int lenght();
-
-	2. Escribe una funcion que regresa el elemento mayor del  BST.
-	T max();
-
-	3. Escribe una funcion que regresa el elemento menor del  BST.
-	T min();
-
-	A mano o con power point, reconstruyan el BST de cada una de las secuencias.
-	86,3,41,37,18,80,49,11,85,34,29,32,48,90,93,39,52,27,85,65,63,23,26,82,7
-
-	38,51,1,27,7,39,10,64,65,72,31,41,87,92,74,12,25,2,97,87,26,26,21,6,89
-
-	13,9,88,100,82,78,46,17,26,15,60,29,64,27,68,81,14,66,84,54,71,36,69,62,18
-
-	Cual de los tres arboles se convierte en lista ligada?
-	*/
 
 	void villianLevels(){	// O(n^2)
 		levels(this->root);	// O(n^2)

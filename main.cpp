@@ -170,7 +170,7 @@ int main()
 			{
 				clearTerminal();
 				cout << "Choice 1" << endl;
-				/* mainTree.levels(); */
+				mainTree.villianLevels();
 				/* cout << "Press any key to continue" << endl; */
 
 			}
